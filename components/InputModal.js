@@ -1,13 +1,12 @@
 import React from 'react'
 import { Modal, StyleSheet, View, Text, TextInput } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { TapGesture } from 'react-native-gesture-handler/lib/typescript/handlers/gestures/tapGesture';
 import AntDesign from "react-native-vector-icons/AntDesign";
 
 const InputModal = ({
     modalVisibility, 
     setModalVisibility, 
-    todoInputValue, 
+    toDoInputValue, 
     setToDoInputValue,
     handleAddToDo,
     listToBeEdited,
@@ -24,12 +23,12 @@ const InputModal = ({
         const handleSubmit = () => {
         if (!listToBeEdited) {
             handleAddToDo({
-                title: todoInputValue,
-                key: `${(bList)[bList.length-1] && parseInt(bList[bList.length-1].key) + 1} || 1}`
+                title: toDoInputValue,
+                key: `${(bList)[bList.length-1] && parseInt(bList[bList.length-1].key)}`
             });
         } else {
             handleEditList({
-                title: todoInputValue,
+                title: toDoInputValue,
                 key: listToBeEdited.key
             })
         }
@@ -61,8 +60,8 @@ const InputModal = ({
                 placeholderTextColor={"black"}
                 selectionColor={"white"}
                 autoFocus={true}
-                // onChangeText={(text) => setToDoInputValue(text)}
-                value={todoInputValue}
+                onChangeText={(text) => setToDoInputValue(text)}
+                value={toDoInputValue}
                 onSubmitEditing={handleSubmit}>
                 </TextInput>
 
@@ -70,7 +69,6 @@ const InputModal = ({
                     <TouchableOpacity style={styles.ModalAction} color={'black'} onPress={handleCloseModal(true)}>
                         <AntDesign name="close" size ={40} color="black"></AntDesign>
                     </TouchableOpacity>
-
                     <TouchableOpacity style={styles.ModalAction} color={'black'} onPress={handleSubmit(true)}>
                         <AntDesign name="check" size ={40} color="black"></AntDesign>
                     </TouchableOpacity>

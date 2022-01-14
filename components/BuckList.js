@@ -1,7 +1,6 @@
 import {Text, StyleSheet, View, TouchableOpacity, TouchableHighlight} from 'react-native'
 import React from 'react'
 import { SwipeListView } from 'react-native-swipe-list-view'
-import Swipeable from 'react-native-gesture-handler'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 
 const BuckList = ({bList, setBList, handleTriggerEdit}) => {
@@ -32,10 +31,10 @@ const BuckList = ({bList, setBList, handleTriggerEdit}) => {
                     </TouchableHighlight>
                 )
             }}
-            renderHidddenItem={() => {
+            renderHidddenItem={(data, rowMap) => {
                 return ( 
                 <View style={styles.ListViewHidden}>
-                    <TouchableOpacity style={styles.hiddenButton}>
+                    <TouchableOpacity style={styles.hiddenButton} onPress={() => {handleDeleteList(rowMap, data.item.key)}}>
                     <FontAwesome5 name='trash' size={25} color='black'></FontAwesome5>
                     </TouchableOpacity>
                 </View>

@@ -26,7 +26,7 @@ const heandleClearAll = () => {
 }
 
 const [modalVisibility, setModalVisibility] = useState(false);
-const [todoInputValue, setTodoInputValue] = useState();
+const [toDoInputValue, setToDoInputValue] = useState();
 
 const handleAddToDo = (todo) => {
     const newBList = [...bList, todo];
@@ -39,7 +39,7 @@ const handleTriggerEdit = (item) => {
     // alert('Edit triggered');
     setListToBeEdited(item);
     setModalVisibility(true);
-    setTodoInputValue(item.title);
+    setToDoInputValue(item.title);
 }
 
 const handleEditList = (editedList) => {
@@ -62,8 +62,8 @@ const handleEditList = (editedList) => {
         <InputModal 
             modalVisibility={modalVisibility} 
             setModalVisibility={setModalVisibility} 
-            todoInputValue={todoInputValue} 
-            setTodoInputValue={setTodoInputValue}
+            toDoInputValue={toDoInputValue} 
+            setToDoInputValue={setToDoInputValue}
             handleAddToDo={handleAddToDo}
             listToBeEdited={listToBeEdited}
             setListToBeEdited={setListToBeEdited}
