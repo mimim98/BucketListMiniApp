@@ -1,5 +1,7 @@
 # BucketListMiniApp
 
+This application is using Javascript and React Native as the framework.
+
 The application should be able to:
 
 1. Display all bucket list ✔️
